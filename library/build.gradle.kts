@@ -17,6 +17,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -31,6 +32,8 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlin.test)
+                implementation(libs.system.lambda)
+
             }
         }
     }
@@ -42,7 +45,7 @@ kotlin {
         it.compilations {
             val main by getting {
                 cinterops {
-                    create("KCrypto")
+                    create("HelloSwift")
                 }
             }
         }
@@ -50,9 +53,16 @@ kotlin {
 }
 
 android {
-    namespace = "org.jetbrains.kotlinx.multiplatform.library.template"
+    namespace = "id.dreamfighter.multiplatform.utils"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+}
+
+swiftklib {
+    create("HelloSwift") {
+        path = file("native/HelloSwift")
+        packageName("com.ttypic.objclibs.greeting")
     }
 }
