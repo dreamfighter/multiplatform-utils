@@ -2,10 +2,10 @@ import id.dreamfighter.multiplatform.utils.toCurrency
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class AndroidFibiTest {
+class AndroidCurrencyTest {
 
     @Test
-    fun `test 3rd element`() {
-        assertEquals(3, fibi.take(3).last())
+    fun `test double to curreny`() {
+        assertEquals("IDR1,000.00", 1000.0.toCurrency("IDR"))
     }
 }

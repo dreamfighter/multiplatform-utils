@@ -4,7 +4,7 @@ plugins {
 
 allprojects {
     group = "com.github.dreamfighter.multiplatform"
-    version = "0.0.4"
+    version = "0.0.5"
 }
 
 /* use this for publishing using plugins io.github.gradle-nexus.publish-plugin

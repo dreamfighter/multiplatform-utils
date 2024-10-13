@@ -46,6 +46,7 @@ kotlin {
             val main by getting {
                 cinterops {
                     create("HelloSwift")
+                    create("Utils")
                 }
             }
         }
@@ -64,5 +65,9 @@ swiftklib {
     create("HelloSwift") {
         path = file("native/HelloSwift")
         packageName("com.ttypic.objclibs.greeting")
+    }
+    create("Utils") {
+        path = file("native/Utils")
+        packageName("id.dreamfighter.multiplatform.swift")
     }
 }
