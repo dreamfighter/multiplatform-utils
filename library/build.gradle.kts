@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -9,12 +11,26 @@ plugins {
 }
 
 kotlin {
+    @OptIn(ExperimentalWasmDsl::class,
+        org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class
+    )
+    wasmJs {
+        moduleName = "composeApp"
+        browser{
+            testTask {
+                useKarma{
+                    useChrome()
+                }
+            }
+        }
+        binaries.executable()
+    }
     jvm()
     androidTarget {
         publishLibraryVariants("release")
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_1_8)
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -33,8 +49,14 @@ kotlin {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(libs.system.lambda)
-
             }
+        }
+        val wasmJsMain by getting {
+            dependencies {
+                implementation(npm("currency-formatter", "1.5.9", generateExternals = true))
+            }
+        }
+        val wasmJsTest by getting {
         }
     }
     listOf(
