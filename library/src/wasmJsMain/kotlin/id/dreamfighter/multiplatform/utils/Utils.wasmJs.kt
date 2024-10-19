@@ -1,14 +1,13 @@
 package id.dreamfighter.multiplatform.utils
 
 @JsModule("currency-formatter")
-@JsName("default")
-external fun sayHello1(value:String)
+external object CurrencyFormatter {
+    @JsName("format")
+    fun format(value: Double, options: JsAny): String
+}
 
-fun options(): JsAny = js("({ code: 'IDR'})")
+fun options(): JsAny = js("({code:'IDR', precision: 2})")
 
 actual fun Double.toCurrency(code: String): String {
-    //sayHello1("name: String")
-
-    //println(defaultCurrency())
-    return "format(this, options())"
+    return CurrencyFormatter.format(this, options())
 }

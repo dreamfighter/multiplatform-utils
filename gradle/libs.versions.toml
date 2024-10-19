@@ -14,3 +14,4 @@ system-lambda = { module = "com.github.stefanbirkner:system-lambda", version.ref
 [plugins]
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinJs = { id = "org.jetbrains.kotlin.plugin.js", version.ref = "kotlin" }

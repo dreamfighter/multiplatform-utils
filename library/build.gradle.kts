@@ -15,7 +15,6 @@ kotlin {
         org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class
     )
     wasmJs {
-        moduleName = "composeApp"
         browser{
             testTask {
                 useKarma{
@@ -30,7 +29,7 @@ kotlin {
         publishLibraryVariants("release")
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
 
@@ -53,10 +52,8 @@ kotlin {
         }
         val wasmJsMain by getting {
             dependencies {
-                implementation(npm("currency-formatter", "1.5.9", generateExternals = true))
+                implementation(npm("currency-formatter", "1.5.9"))
             }
-        }
-        val wasmJsTest by getting {
         }
     }
     listOf(

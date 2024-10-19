@@ -12,7 +12,7 @@ class FibiTest {
 
     @Test
     fun testDoubleToCurreny() {
-        printHelloWorld()
-        //assertEquals("IDR 1.000,0", 1000.0.toCurrency("IDR"))
+        //printHelloWorld()
+        assertEquals("Rp1.000,0", 1000.0.toCurrency("IDR"))
     }
 }
