@@ -39,6 +39,11 @@ kotlin {
     linuxX64()
 
     sourceSets {
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.androidx.startup.runtime)
+            }
+        }
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
