@@ -17,5 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "multiplatform-library"
-include(":library")
+rootProject.name = "multiplatform-utils"
+include(":utils")
